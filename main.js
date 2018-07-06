@@ -1,7 +1,15 @@
 function getToken(){
   var request = new XMLHttpRequest(); //New request object
   request.onload = function() {
-    document.getElementById('tokenLoc').innerHTML = this.responseText;
+    var token = this.responseText;
+    var element = document.getElementById("tokenLoc");
+    element.classList.add("hide");
+
+    setTimeout(function(){
+      element.setAttribute("data-content",token);
+      element.classList.remove("hide");
+    },1000);
+
   };
 
   request.open("get", "getToken.php", true);

@@ -10,3 +10,13 @@
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   font-size: 50px;
 }
+
+#tokenLoc::before{
+    content: attr(data-content);
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+#tokenLoc.hide::before{
+  opacity: 0;
+}
