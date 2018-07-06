@@ -14,7 +14,7 @@ function getToken(){
 
     runs++;
 
-    if(runs = 2){
+    if(runs == 2){
       document.getElementById("tokenProgress").classList.add("go");
     }
 
