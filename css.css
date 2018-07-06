@@ -20,3 +20,19 @@
 #tokenLoc.hide::before{
   opacity: 0;
 }
+
+.progress-bar.go{
+  background-color: Chartreuse;
+  position: absolute;
+  height: 75px;
+  display: block;
+  animation-name: expandWidth;
+  animation-duration: 300s;
+  animation-iteration-count: infinite;
+  z-index: -10;
+}
+
+@keyframes expandWidth {
+   0% { width: 0; }
+   100% { width: calc(100% - 30px); }
+}

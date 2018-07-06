@@ -1,3 +1,5 @@
+var runs = 0;
+
 function getToken(){
   var request = new XMLHttpRequest(); //New request object
   request.onload = function() {
@@ -9,6 +11,12 @@ function getToken(){
       element.setAttribute("data-content",token);
       element.classList.remove("hide");
     },1000);
+
+    runs++;
+
+    if(runs = 2){
+      document.getElementById("tokenProgress").classList.add("go");
+    }
 
   };
 
