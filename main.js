@@ -1,23 +1,22 @@
 function getToken(){
-  $.ajax({
-     method: "GET",
-     url: "getToken.php"
-   })
-   .done(function( msg ) {
-     $(".boks p").html(msg);
+  var request = new XMLHttpRequest(); //New request object
+  request.onload = function() {
+    document.getElementById('tokenLoc').innerHTML = this.responseText;
+  };
 
-     var currTime = new Date(); // for now
+  request.open("get", "getToken.php", true);
+  request.send();
 
-     var waitTime = (5-(currTime.getMinutes()%5))*60
-     waitTime = waitTime - currTime.getSeconds();
 
-     setTimeout(getToken(),waitTime*1000);
+  var currTime = new Date(); // for now
 
-   }).fail(function( jqXHR, textStatus ) {
-     alert( "Error: " + textStatus + " / " + jqXHR.statusText);
-   });
+  var waitTime = (5-(currTime.getMinutes()%5))*60;
+  waitTime = waitTime - currTime.getSeconds();
+  waitTime = waitTime * 1000;
+
+  setTimeout(getToken,waitTime);
 }
 
-$( document ).ready(function() {
+document.addEventListener('DOMContentLoaded', function(){
   getToken();
 });
